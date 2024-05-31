@@ -46,6 +46,11 @@ class GDK101: public PollingComponent, public Sensor {
 	ESP_LOGD(TAG, "%f", value);
 	ESP_LOGD(TAG, "uSv/h");
 	
+	if(0xB3 ==cmd)
+	{
+		publish_state(float(value));
+	}
+	
   } 
   
   

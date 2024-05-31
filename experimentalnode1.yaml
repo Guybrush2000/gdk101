@@ -1,0 +1,45 @@
+esphome:
+  name: experimentalnode1
+  platform: ESP8266
+  board: nodemcuv2
+  includes:
+    - GDK101.h
+
+wifi:
+  ssid: "Quarta"
+  password: "Bgh10bgh"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Experimentalnode1"
+    password: "N8TrXtB4Miol"
+
+captive_portal:
+
+# Enable logging
+logger:
+  level: debug
+
+# Enable Home Assistant API
+api:
+  password: "Bgh11bgh"
+
+ota:
+  password: "Bgh11bgh"
+
+i2c:
+ - id: bus_a
+   sda: D3
+   scl: D2 
+   scan: True
+
+sensor:
+ - platform: custom
+   lambda: |-
+     auto sievert = new GDK101();
+     App.register_component(sievert);
+     return {sievert};
+   sensors:
+     name: "Radiation Exposure"
+     unit_of_measurement: "uS per Hour"
+     accuracy_decimals: 3
