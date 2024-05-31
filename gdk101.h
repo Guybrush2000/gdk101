@@ -13,7 +13,7 @@ static const char *TAG = "This code area name";
 class GDK101: public PollingComponent, public Sensor {
  public:
   // constructor
-  GDK101() : PollingComponent(15000) {} // 15s 
+  GDK101() : PollingComponent(60000) {} // 60s 
   
 	int addr = 0x18;
 	int day,hour,min,sec = 0;
@@ -46,7 +46,7 @@ class GDK101: public PollingComponent, public Sensor {
 	ESP_LOGD(TAG, "%f", value);
 	ESP_LOGD(TAG, "uSv/h");
 	
-	if(0xB3 ==cmd)
+	if(0xB2 ==cmd) // 10 min avg
 	{
 		publish_state(float(value));
 	}
