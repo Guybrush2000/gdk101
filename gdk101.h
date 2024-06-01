@@ -84,7 +84,7 @@ class GDK101: public PollingComponent, public Sensor {
   {
 	 
 	ESP_LOGI(TAG, "GDK101 - update()");
-	Gamma_Mod_Read(0xB3);
+	Gamma_Mod_Read(0xB2);
 	  /*
     // This will be called every "update_interval" milliseconds.
     Wire.requestFrom(I2C_address, 2);
